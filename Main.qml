@@ -16,18 +16,19 @@
 // You should have received a copy of the GNU General Public License
 // along with Sugar Dark. If not, see <https://www.gnu.org/licenses/>.
 //
+// --- Adapted for SDDM 0.21+ / Qt6 ---
 
-import QtQuick 2.11
-import QtQuick.Layouts 1.11
-import QtQuick.Controls 2.4
-import QtGraphicalEffects 1.0
+import QtQuick 2.15
+import QtQuick.Layouts 1.15
+import QtQuick.Controls 2.15
+import Qt5Compat.GraphicalEffects
 import "Components"
 
 Pane {
     id: root
 
     height: config.ScreenHeight || Screen.height
-    width: config.ScreenWidth || Screen.ScreenWidth
+    width: config.ScreenWidth || Screen.width
 
     LayoutMirroring.enabled: config.ForceRightToLeft == "true" ? true : Qt.application.layoutDirection === Qt.RightToLeft
     LayoutMirroring.childrenInherit: true
@@ -200,7 +201,7 @@ Pane {
 
             height: parent.height
             width: config.HaveFormBackground == "true" && config.FormPosition != "center" && config.PartialBlur != "true" ? parent.width - formBackground.width : parent.width
-            anchors.left: leftleft || 
+            anchors.left: leftleft ||
                           leftcenter ?
                                 formBackground.right : undefined
 

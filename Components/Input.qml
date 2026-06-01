@@ -16,11 +16,12 @@
 // You should have received a copy of the GNU General Public License
 // along with Sugar Dark. If not, see <https://www.gnu.org/licenses/>.
 //
+// --- Adapted for SDDM 0.21+ / Qt6 ---
 
-import QtQuick 2.11
-import QtQuick.Layouts 1.11
-import QtQuick.Controls 2.4
-import QtGraphicalEffects 1.0
+import QtQuick 2.15
+import QtQuick.Layouts 1.15
+import QtQuick.Controls 2.15
+import Qt5Compat.GraphicalEffects
 
 Column {
     id: inputContainer
@@ -552,12 +553,14 @@ Column {
         textConstantSession: textConstants.session
     }
 
+    // Qt6: Connections usa sintaxis de función explícita
     Connections {
         target: sddm
-        onLoginSucceeded: {}
-        onLoginFailed: {
+        function onLoginSucceeded() {}
+        function onLoginFailed() {
             failed = true
-            resetError.running ? resetError.stop() && resetError.start() : resetError.start()
+            resetError.running ? resetError.stop() : null
+            resetError.start()
         }
     }
 

@@ -3,22 +3,10 @@
 //
 // Copyright 2018 Marian Arlt
 //
-// Sugar Dark is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-//
-// Sugar Dark is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-// GNU General Public License for more details.
-//
-// You should have received a copy of the GNU General Public License
-// along with Sugar Dark. If not, see <https://www.gnu.org/licenses/>.
-//
+// --- Adapted for SDDM 0.21+ / Qt6 ---
 
-import QtQuick 2.11
-import QtQuick.Controls 2.4
+import QtQuick 2.15
+import QtQuick.Controls 2.15
 
 Column {
     id: clock
@@ -27,7 +15,7 @@ Column {
 
     Label {
         anchors.horizontalCenter: parent.horizontalCenter
-        font.pointSize: config.HeaderText !=="" ? root.font.pointSize * 3 : 0
+        font.pointSize: config.HeaderText !== "" ? root.font.pointSize * 3 : 0
         color: root.palette.text
         renderType: Text.QtRendering
         text: config.HeaderText
